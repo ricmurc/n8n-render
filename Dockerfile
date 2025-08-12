@@ -1,14 +1,12 @@
 FROM n8nio/n8n:latest
 
-# Optional: Set working directory
+# Establece el directorio de trabajo
 WORKDIR /home/node
 
-# Optional: Copy local .env file (useful for local testing)
-# Comment this out if deploying only on Render
-# COPY .env .env
-
-# Expose the default n8n port
+# Expone el puerto por defecto
 EXPOSE 5678
 
-# Start n8n
+# Usa el comando correcto para iniciar n8n
+ENTRYPOINT ["tini", "--"]
 CMD ["n8n"]
+
