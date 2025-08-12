@@ -22,6 +22,10 @@ services:
         value: SKOHge8y_#2025!
       - key: DB_POSTGRESDB_SCHEMA
         value: public
+      - key: DB_POSTGRESDB_TABLE_PREFIX
+        value: n8n_
+      - key: DB_POSTGRESDB_SKIP_CHECK
+        value: true  
       - key: WEBHOOK_URL
         value: https://n8n-service.onrender.com/
       - key: N8N_ENCRYPTION_KEY
@@ -44,8 +48,7 @@ services:
         value: false
       - key: EXECUTIONS_DATA_SAVE_MANUAL_EXECUTIONS
         value: false
-      - key: DB_POSTGRESDB_TABLE_PREFIX
-        value: n8n_
+      
 
     disk:
       name: n8n-disk
