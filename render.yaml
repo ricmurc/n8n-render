@@ -1,51 +1,41 @@
 services:
   - type: web
-    name: n8n
+    name: n8n-service
     env: docker
-    region: oregon # optional (defaults to oregon)
-    plan: standard # optional (defaults to starter)
-    branch: main # optional (defaults to master)
+    region: oregon
+    plan: free
+    branch: main
     numInstances: 1
     healthCheckPath: /
     envVars:
       - key: DB_TYPE
         value: postgresdb
       - key: DB_POSTGRESDB_HOST
-        fromDatabase:
-          name: n8n-db
-          property: host
+        value: db.cyiwsondajjgnnuvskcy.supabase.co
       - key: DB_POSTGRESDB_DATABASE
-        fromDatabase:
-          name: n8n-db
-          property: database
+        value: postgres
       - key: DB_POSTGRESDB_PORT
-        fromDatabase:
-          name: n8n-db
-          property: port
+        value: "5432"
       - key: DB_POSTGRESDB_USER
-        fromDatabase:
-          name: n8n-db
-          property: user
+        value: postgres
       - key: DB_POSTGRESDB_PASSWORD
-        fromDatabase:
-          name: n8n-db
-          property: password
+        value: SKOHge8y_#2025!
       - key: DB_POSTGRESDB_SCHEMA
         value: public
       - key: WEBHOOK_URL
-        value: https://your-n8n-app.onrender.com/
+        value: https://n8n-service.onrender.com/
       - key: N8N_ENCRYPTION_KEY
-        value: YOUR_ENCRYPTION_KEY_HERE
+        value: CHANGE_THIS_TO_A_SECURE_RANDOM_STRING
       - key: GENERIC_TIMEZONE
-        value: America/Sao_Paulo
+        value: America/Lima
       - key: TZ
-        value: America/Sao_Paulo
+        value: America/Lima
       - key: N8N_LOG_LEVEL
         value: info
       - key: EXECUTIONS_DATA_PRUNE
         value: true
       - key: EXECUTIONS_DATA_MAX_AGE
-        value: 168
+        value: "168"
       - key: EXECUTIONS_DATA_SAVE_ON_ERROR
         value: all
       - key: EXECUTIONS_DATA_SAVE_ON_SUCCESS
@@ -58,7 +48,3 @@ services:
       name: n8n-disk
       mountPath: /home/node/.n8n
       sizeGB: 5
-
-databases:
-  - name: n8n-db
-    plan: basic-1gb
