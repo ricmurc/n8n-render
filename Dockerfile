@@ -1,4 +1,4 @@
-FROM n8nio/n8n:latest
+FROM n8nio/n8n:1.107.4
 
 # Establece el directorio de trabajo
 WORKDIR /home/node
@@ -8,5 +8,5 @@ EXPOSE 5678
 
 # Usa el comando correcto para iniciar n8n
 ENTRYPOINT ["tini", "--"]
-CMD ["n8n"]
+CMD ["n8n", "start", "--trust-proxy"]
 
