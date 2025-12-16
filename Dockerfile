@@ -1,4 +1,4 @@
-FROM n8nio/n8n:1.116.1
+FROM n8nio/n8n:2.0.2
 
 # Establece el directorio de trabajo
 WORKDIR /home/node
